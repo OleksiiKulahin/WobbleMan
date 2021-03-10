@@ -1,0 +1,4 @@
+#Wed Mar 10 20:50:26 EET 2021
+base.0=D\:\\_Unity projects\\Wobble Man\\Temp\\gradleOut\\launcher\\build\\intermediates\\transforms\\dexMerger\\release\\0
+path.0=classes.dex
+renamed.0=classes.dex

@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public GameObject screenWin;
     public GameObject screenLose;
     public GameObject level;
+    public GameObject money;
     public GameManager gm;
     public LevelManager lm;
 
@@ -25,10 +26,9 @@ public class UIManager : MonoBehaviour
     public void openScreenWin()
     {
         level.SetActive(false);
+        money.SetActive(false);
         gm.changePause();
-        changePause();
         screenWin.SetActive(true);
-        print(lm.level);
         screenWin.transform.GetChild(1).GetComponent<Text>().text = "Level " + (lm.level-1) + " is completed!";
         level.GetComponent<Text>().text = "Floor " + lm.level;
     }
@@ -37,19 +37,26 @@ public class UIManager : MonoBehaviour
     {
         screenWin.SetActive(false);
         level.SetActive(true);
+        money.SetActive(true);
     }
 
     public void openScreenLose()
     {
         gm.changePause();
-        changePause();
         screenLose.SetActive(true);
         level.SetActive(false);
+        money.SetActive(false);
     }
 
     public void closeScreenLose()
     {
         screenLose.SetActive(false);
         level.SetActive(true);
+        money.SetActive(true);
+    }
+
+    public void updateMoney()
+    {
+        money.GetComponent<Text>().text = "Money: " + gm.getMoney();
     }
 }

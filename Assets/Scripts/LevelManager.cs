@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour
     public int level;
     public PlayerController pc;
     public UIManager ui;
+    public GameManager gm;
 
     void Start()
     {
@@ -16,8 +17,8 @@ public class LevelManager : MonoBehaviour
 
     public void nextLevel()
     {
-        print("level up");
-        if (level != 3) level++;
+        level++;
+        gm.changeMoney(50);
         ui.openScreenWin();
         levelList.RemoveAt(0);
         levelList.Add(Resources.Load("Prefabs/Levels/Level"+level) as GameObject);
@@ -28,7 +29,16 @@ public class LevelManager : MonoBehaviour
     public void loseLevel()
     {
         ui.openScreenLose();
-        Instantiate(levelList[0]).tag = "Level";
         pc.startSettings();
+        restartLevel();
+    }
+
+    public void restartLevel()
+    {
+        for (int i = 0; i < levelList.Count; i++)
+        {
+            levelList[i].GetComponent<Level>().ColliderEnemyEvent.Invoke();
+        }
+        Instantiate(levelList[0]).tag = "Level";
     }
 }
