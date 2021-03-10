@@ -4,17 +4,18 @@ public class PlayerController : MonoBehaviour
 {
     public float _speedMove;
     private Vector3 _moveVector;
-    private CharacterController characterController;
     public JoystickController joystickController;
     public GameManager gameManager;
     public TrailRenderer trailRenderer;
+    public Rigidbody _rb;
+    public Vector3 _groundLocation;
 
     void Start()
     {
         startSettings();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!gameManager.getPause())
         {
@@ -30,25 +31,23 @@ public class PlayerController : MonoBehaviour
     {
         _moveVector = Vector3.zero;
 
-        _moveVector.x = joystickController.getHorizontal() * _speedMove;
-        _moveVector.z = joystickController.getVertical() * _speedMove;
+        _moveVector.x = joystickController.getHorizontal()*_speedMove;
+        _moveVector.z = joystickController.getVertical()*_speedMove;
 
         if (Vector3.Angle(Vector3.forward,_moveVector)>1f||Vector3.Angle(Vector3.forward,_moveVector)==0)
         {
-            Vector3 direct = Vector3.RotateTowards(transform.forward, _moveVector, _speedMove, 0.0f);
-            transform.rotation = Quaternion.LookRotation(direct);
+            _rb.MoveRotation(Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, _moveVector, _speedMove, 0.0f)));
         }
-
-        characterController.Move(_moveVector * Time.deltaTime);
+        _rb.MovePosition(transform.position+Time.deltaTime*_moveVector);
     }
 
     public void startSettings()
     {
-        //_speedMove = 5;
-        characterController = GetComponent<CharacterController>();
+        _rb = GetComponent<Rigidbody>();
         joystickController.transform.position = new Vector3(0,0,0);
         trailRenderer.emitting = false;
         transform.position = new Vector3(0, 1.5f, 0);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
         trailRenderer.Clear();
         trailRenderer.emitting = true ;
     }
