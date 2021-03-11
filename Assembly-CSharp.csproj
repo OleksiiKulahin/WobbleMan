@@ -61,11 +61,13 @@
      <Compile Include="Assets\Scripts\Colliders\EnemyCollider.cs" />
      <Compile Include="Assets\Scripts\Colliders\ExitCollider.cs" />
      <Compile Include="Assets\Scripts\Colliders\PlateCollider.cs" />
+     <Compile Include="Assets\Scripts\FollowingPath.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Item.cs" />
      <Compile Include="Assets\Scripts\JoystickController.cs" />
      <Compile Include="Assets\Scripts\Level.cs" />
      <Compile Include="Assets\Scripts\LevelManager.cs" />
+     <Compile Include="Assets\Scripts\MovementPath.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\UIManager.cs" />
      <None Include="Assets\LightningBolt\Readme.txt" />

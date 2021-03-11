@@ -7,8 +7,11 @@ public class EnemyCollider : MonoBehaviour
 
     public void OnTriggerEnter(Collider collider)
     {
-        _lm = GameObject.Find("LevelManager").GetComponent<LevelManager>();
-        _lm.loseLevel();
-        parentLevel.ColliderEnemyEvent.Invoke();
+        if (collider.tag=="Player")
+        {
+            _lm = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+            _lm.loseLevel();
+            parentLevel.ColliderEnemyEvent.Invoke();
+        }
     }
 }

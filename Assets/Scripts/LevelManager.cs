@@ -12,17 +12,24 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         level = 1;
-        levelList.Add(Resources.Load("Prefabs/Levels/Level" + level) as GameObject);
     }
 
     public void nextLevel()
     {
-        level++;
-        gm.changeMoney(50);
+        if(level<3)level++;
+        gm.changeMoney(levelList[0].GetComponent<Level>().moneyForLevel);
         ui.openScreenWin();
         levelList.RemoveAt(0);
         levelList.Add(Resources.Load("Prefabs/Levels/Level"+level) as GameObject);
-        Instantiate(levelList[0]).tag="Level";
+        if (levelList[0]!=null)
+        {
+            Instantiate(levelList[0]).tag = "Level";
+        }
+        else
+        {
+            Debug.Log("Out of levels");
+            return;
+        }
         pc.startSettings();
     }
 
@@ -38,7 +45,9 @@ public class LevelManager : MonoBehaviour
         for (int i = 0; i < levelList.Count; i++)
         {
             levelList[i].GetComponent<Level>().ColliderEnemyEvent.Invoke();
+            levelList.RemoveAt(i);
         }
+        levelList.Add(Resources.Load("Prefabs/Levels/Level" + level) as GameObject);
         Instantiate(levelList[0]).tag = "Level";
     }
 }

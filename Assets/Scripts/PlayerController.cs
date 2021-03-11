@@ -42,7 +42,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         joystickController.transform.position = new Vector3(0,0,0);
         trailRenderer.emitting = false;
-        transform.position = new Vector3(0, 1.5f, 0);
+        rb.position=GameObject.Find("LevelManager").GetComponent<LevelManager>().levelList[0]
+            .GetComponent<Level>().playerSpawn.transform.position;
         transform.rotation = Quaternion.Euler(0, 0, 0);
         trailRenderer.Clear();
         trailRenderer.emitting = true ;

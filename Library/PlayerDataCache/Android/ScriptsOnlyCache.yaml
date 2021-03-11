@@ -6,11 +6,13 @@ ScriptsOnlyBuild:
     - DigitalRuby.LightningBolt.LightningBoltScript
     - EnemyCollider
     - ExitCollider
+    - FollowingPath
     - GameManager
     - Item
     - JoystickController
     - Level
     - LevelManager
+    - MovementPath
     - PlateCollider
     - PlayerController
     - UIManager
@@ -102,6 +104,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13072}
     - Class: 114
       Script: {instanceID: 13076}
+    - Class: 114
+      Script: {instanceID: 61772}
+    - Class: 114
+      Script: {instanceID: 68676}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -291,7 +297,7 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: e218f7bb2b5f04267181efd6c20e4e1a
+      Hash: 1601b449bb1b9145fa1e7927c425094e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Level
@@ -631,7 +637,19 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 8ec11222dbd73142e62eaed1f70e3968
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MovementPath
+  - hash:
+      serializedVersion: 2
+      Hash: 81951ea46d868ec9378fb66c15422b4c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FollowingPath
   platform: 13
   scenePathNames:
   - Assets/MainScene.unity
-  playerPath: D:/_Unity projects/Wobble Man/Wobble Man 1.02.apk
+  playerPath: D:/_Unity projects/Wobble Man/Wobble Man 1.03.apk

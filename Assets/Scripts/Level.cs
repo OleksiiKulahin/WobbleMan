@@ -6,6 +6,7 @@ public class Level : MonoBehaviour
     public UnityEvent ColliderLevelExitEvent;
     public UnityEvent ColliderEnemyEvent;
     public int moneyForLevel;
+    public GameObject playerSpawn;
 
     public void onColliderLevelExitEvent()
     {

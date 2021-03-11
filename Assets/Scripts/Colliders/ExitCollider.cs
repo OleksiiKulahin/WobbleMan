@@ -7,8 +7,11 @@ public class ExitCollider : MonoBehaviour
 
     public void OnTriggerEnter(Collider collider)
     {
-        _lm = GameObject.Find("LevelManager").GetComponent<LevelManager>();
-        parentLevel.ColliderLevelExitEvent.Invoke();
-        _lm.nextLevel();
+        if (collider.tag == "Player")
+        {
+            _lm = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+            _lm.nextLevel();
+            parentLevel.ColliderLevelExitEvent.Invoke();
+        }
     }
 }

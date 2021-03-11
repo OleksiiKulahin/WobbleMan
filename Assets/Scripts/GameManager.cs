@@ -21,8 +21,8 @@ public class GameManager : MonoBehaviour
 
     public void changePause()
     {
-        pause = !pause;
         pc.startSettings();
+        pause = !pause;
     }
 
     public void menuClick()

@@ -11,7 +11,7 @@ public class Item : MonoBehaviour
 
     public void OnTriggerEnter(Collider collider)
     {
-        if (name.Contains("Money"))
+        if (name.Contains("Money")&& collider.tag=="Player")
         {
             Destroy(gameObject);
             _gm.changeMoney(10);
